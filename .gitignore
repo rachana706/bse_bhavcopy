@@ -1,0 +1,4 @@
+*.zip
+extraction_bhavcopy/
+venv/
+db.sqlite3

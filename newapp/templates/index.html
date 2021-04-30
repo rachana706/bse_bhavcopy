@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block content %}
+<form type="get" action="." style="margin: 0">
+    <input id="SC_NAME" type="text" name="SC_NAME"
+           placeholder="Type SC_CODE">
+    <button id="search_submit" type="submit">Submit</button>
+    <a href="/download/">Download</a>
+</form>
+<div class="row">
+
+    <div class="col-sm-12">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+
+                <th scope="col">SC_CODE</th>
+                <!--                          <th scope="col">Is Active?</th>-->
+                <th scope="col">SC_NAME</th>
+                <th scope="col">SC_GROUP</th>
+                <th scope="col">SC_TYPE</th>
+                <th scope="col">OPEN</th>
+                <th scope="col">HIGH</th>
+                <th scope="col">LOW</th>
+                <th scope="col">CLOSE</th>
+                <th scope="col">LAST</th>
+                <th scope="col">PREVCLOSE</th>
+                <th scope="col">NO_TRADES</th>
+                <th scope="col">NO_OF_SHRS</th>
+                <th scope="col">NET_TURNOV</th>
+                <th scope="col">TDCLOINDI</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in data_list %}
+            <tr>
+
+                <!--                <th scope="row">{{ loop.index }}</th>-->
+                <td>{{ data.SC_CODE }}</td>
+                <!--                          <th scope="col">Is Active?</th>-->
+                <td>{{ data.SC_NAME }}</td>
+                <td>{{ data.SC_GROUP }}</td>
+                <td>{{ data.SC_TYPE }}</td>
+                <td>{{ data.OPEN }}</td>
+                <td>{{ data.HIGH }}</td>
+                <td>{{ data.LOW }}</td>
+                <td>{{ data.CLOSE }}</td>
+                <td>{{ data.LAST }}</td>
+                <td>{{ data.PREVCLOSE }}</td>
+                <td>{{ data.NO_TRADES }}</td>
+                <td>{{ data.NO_OF_SHRS }}</td>
+                <td>{{ data.NET_TURNOV }}</td>
+                <td>{{ data.TDCLOINDI }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
