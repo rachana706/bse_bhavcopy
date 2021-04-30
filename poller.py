@@ -4,6 +4,11 @@ import logging
 import os
 import redis
 from zipfile import ZipFile
+import schedule
+import time
+
+
+
 
 
 def get_bhavcopy():
@@ -25,8 +30,8 @@ def get_bhavcopy():
         return False
     return True
 
-
-if __name__ == '__main__':
+def poll():
+    print('polling started')
     if get_bhavcopy():
         conn = redis.Redis('localhost')
         try:
@@ -44,5 +49,13 @@ if __name__ == '__main__':
 
 
         except Exception as e:
-
             logging.exception(e)
+
+
+if __name__ == '__main__':
+
+    schedule.every().day.at("17:30").do(poll, 'It is 17:30')
+
+    while True:
+        schedule.run_pending()
+        time.sleep(60*60)  # wait one minute

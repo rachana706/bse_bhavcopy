@@ -21,5 +21,5 @@ from journal.views import index1 as index, file_load_view
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^download/$', file_load_view, name='file'),
-    url(r'^products/$', index, name='index')
+    url(r'^$', index, name='index')
 ]
